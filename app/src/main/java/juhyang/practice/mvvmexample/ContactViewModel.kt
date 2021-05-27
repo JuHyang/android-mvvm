@@ -13,17 +13,6 @@ import androidx.lifecycle.ViewModelProvider
  */
 class ContactViewModel(application : Application) : AndroidViewModel(application) {
 
-    class ContactViewModelFactory(val application :Application) : ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return if (modelClass.isAssignableFrom(ContactViewModel::class.java)) {
-                ContactViewModel(application) as T
-            } else {
-                throw IllegalArgumentException()
-            }
-        }
-
-    }
-
     private val repository = ContactRepository(application)
     private val contacts = repository.getAll()
 
